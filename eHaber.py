@@ -1,4 +1,3 @@
-
 import email
 from re import X
 import tkinter as tk
@@ -20,7 +19,7 @@ def anaSayfaEkrani():
     anasayfa.title("eHaber Uygulaması")
 
     btnHaberler = []
-    haberler = ["general", "entertainment","business", "sports", "technology", "health"] 
+    trhaberler = ["genel", "eğlence","finans", "spor", "teknoloji", "sağlık"] 
     arkaPlanRenk = "#c60000"
     FontRengi = "#b0e0e6"
     title = Label(anasayfa, text="eHaber", font=("times new roman", 30, "bold"),  
@@ -31,6 +30,21 @@ def anaSayfaEkrani():
     #Api gelen bilgilerinin ekrana yazılması 
     def eHaber(a):
         tur = a.widget.cget('text').lower() 
+        if tur == "GENEL" : 
+            tur = "GENERAL"
+        elif tur == "EĞLENCE" : 
+            tur = "ENTERTAINMENT"
+        elif tur == "SPOR":
+            tur = "BUSINESS"
+        elif tur == "TEKNOLOJİ":
+            tur = "TECHNOLOGY"
+        else : 
+            tur = "HEALTH"
+
+
+
+
+
         apiurl = f'http://newsapi.org/v2/top-headlines?country=tr&category={tur}&apiKey=0e26e464830941f7b9c7f82f37151c2e'
         txtVeriler.insert(END, f"\n eHaber Uygulamasına Hoş Geldiniz..\n") 
         txtVeriler.insert(END, "--------------------------------------------------------------------\n") 
@@ -54,11 +68,14 @@ def anaSayfaEkrani():
 
     F1 = tk.LabelFrame(anasayfa, text="Kategoriler", font=("times new roman", 20, "bold"), bg= "gray") 
     F1.place(x=0, y=70, relwidth=1, height=100)
-    for i in range(len(haberler)): 
-            b = tk.Button(F1, text=haberler[i].upper(), width=20, font="arial 15 bold") 
+    for i in range(len(trhaberler)): 
+            
+
+            b = tk.Button(F1, text=trhaberler[i].upper(), width=20, font="arial 15 bold") 
             b.grid(row=0, column=i, padx=10, pady=15) 
             b.bind('<Button-1>', eHaber) 
             btnHaberler.append(b) 
+            
 
 
 
@@ -72,7 +89,7 @@ def anaSayfaEkrani():
     txtVeriler = tk.Text(F2, yscrollcommand=dikeyScrol.set, font=("times new roman", 15, "bold"), bg="white", fg="#1c0f45" , height=100 , width=150) 
     dikeyScrol.pack(side=tk.RIGHT, fill=tk.Y) 
     dikeyScrol.config(command=txtVeriler.yview) 
-    txtVeriler.insert(tk.END,"Lütfen İlgili Kategoriyi Seçiniz ") 
+    txtVeriler.insert(tk.END,"Lütfen Yukarıdan İlgili Kategoriyi Seçiniz ") 
     txtVeriler.pack() 
 
 
@@ -102,11 +119,6 @@ veriEposta = tk.Entry(width=20)
 veriEposta.place(x=200 , y=100)
 veriSifre = tk.Entry(width=20)
 veriSifre.place(x=200, y=170)
-
-
-
-
-
 
 #
 #Kayit EKrani --------

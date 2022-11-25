@@ -11,12 +11,18 @@ from tkinter import messagebox
 import requests 
 import json 
 
+
+
 def anaSayfaEkrani():
+
+    
 
     #Anasayfa Ekranı
     anasayfa = tk.Tk()
     anasayfa.geometry('1650x900+150+60')
     anasayfa.title("eHaber Uygulaması")
+
+    
 
     btnHaberler = []
     trhaberler = ["genel", "eğlence","finans", "spor", "teknoloji", "sağlık"] 
@@ -99,6 +105,8 @@ def anaSayfaEkrani():
 
 #Giriş ekranı baslangıc
 girisEKrani = tk.Tk()
+
+
 #Ekranın boyutları 
 girisEKrani.geometry("700x400")
 girisEKrani.maxsize(700,400)
@@ -106,7 +114,16 @@ girisEKrani.minsize(700,400)
 #Ekranın Baslıgı
 girisEKrani.title("Uygulama Başlığı")
 
-txtbaslik = tk.Label(text="Giriş Ekranı" , font="Verdana 15 italic" , fg="black")
+girisEKrani.resizable(width=False, height=False)
+bg = PhotoImage(file = "pngwing.com.png" )
+
+width, height = bg.width(), bg.height()
+canvas = tk.Canvas(girisEKrani, width=width, height=height)
+canvas.pack()
+canvas.create_image((0, 0), image=bg, anchor="nw")
+
+
+txtbaslik = tk.Label(text="Giriş Ekranı" , font="Verdana 15 italic" , fg="black" )
 txtbaslik.place(x=290,y=10)
 
 #EPosta sifre 
@@ -129,6 +146,14 @@ def kayitEkrani():
     kayitEkrani.geometry("700x400+800+80")
     kayitEkrani.maxsize(700,400)
     kayitEkrani.minsize(700,400)
+    kayitEkrani.resizable(width=False, height=False)
+    bg = PhotoImage(file = "pngwing.com.png" )
+
+    width, height = bg.width(), bg.height()
+    canvas = tk.Canvas(kayitEkrani, width=width, height=height)
+    canvas.pack()
+    canvas.create_image((0, 0), image=bg, anchor="nw")
+
     #Title
     kayitEkrani.title("Kayıt Ol")
 
